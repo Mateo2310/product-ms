@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: product-ms
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config-service
+  config:
+    import: optional:configserver:.
+server:
+  port: 8080
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  info:
+    env:
+      enabled: true
+info:
+  app:
+    name: product-ms
+    description: is product microservice
+    version: 1.0.0
+# esto es para que en eureka server nos lleve a localhost:8080 y no cambiarlo a mano, suele llevar directamente a la ip de la maquina
+#eureka:
+#  instance:
+#    status-page-url-path: http://localhost:8080/actuator/info
+#    health-check-url-path: http://localhost:8080/actuator/health
