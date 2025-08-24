@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/product")
@@ -21,8 +22,7 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<List<UserResponseDTO>> getAllUsers(@RequestHeader("X-Request-from") String requestFrom) {
-        System.out.println("Request from: " + requestFrom);
+    public ResponseEntity<List<UserResponseDTO>> getAllUsers(@RequestHeader("X-Request-from") String requestFrom, @RequestHeader() Map<String,String> headers) {
         if (requestFrom == null || !requestFrom.equals("gateway")) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

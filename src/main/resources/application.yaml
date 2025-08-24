@@ -1,6 +1,11 @@
 spring:
   application:
     name: product-ms
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/master
   cloud:
     config:
       discovery:
